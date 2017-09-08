@@ -1,0 +1,14 @@
+[{
+  "modid": "smd",
+  "name": "Debagger",
+  "description": "A mod to help you to empty your bags",
+  "version": "0.0.1",
+  "mcversion": "[1.10.2]",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["OvisMaximus"],
+  "credits": "all of them",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}]
