@@ -1,3 +1,11 @@
 package de.softcoture.mc.debagger.proxy
 
-class ClientProxy : CommonProxy()
+import de.softcoture.mc.debagger.items.ModItems
+
+class ClientProxy : CommonProxy() {
+    override fun init() {
+        super.init()
+        ModItems.registerRenders()
+    }
+
+}

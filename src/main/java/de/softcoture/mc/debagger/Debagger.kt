@@ -20,13 +20,16 @@ class Debagger {
 
     @EventHandler
     fun preInit(event:FMLPreInitializationEvent) {
+        proxy!!.preInit()
     }
 
     @EventHandler
     fun Init(event: FMLInitializationEvent) {
+        proxy!!.init()
     }
 
     @EventHandler
     fun postInit(event: FMLPostInitializationEvent) {
+        proxy!!.postInit()
     }
 }
