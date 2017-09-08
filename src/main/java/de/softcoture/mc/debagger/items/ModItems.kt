@@ -4,22 +4,25 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
 import net.minecraft.item.Item
 import net.minecraftforge.fml.common.registry.GameRegistry
-import java.util.logging.Logger
 
 object ModItems {
 
     var obsidianIngot: Item? = null
+    var ruby: Item? = null
 
     fun init() {
         obsidianIngot = ItemObsidianIngot()
+        ruby = ItemRuby()
     }
 
     fun register () {
         GameRegistry.register(obsidianIngot)
+        GameRegistry.register(ruby)
     }
 
     fun registerRenders() {
         registerRender(obsidianIngot)
+        registerRender(ruby)
     }
 
     private fun registerRender(item: Item?) {

@@ -10,6 +10,6 @@ const val CLIENT_PROXY_CLASS = "de.softcoture.mc.debagger.proxy.ClientProxy"
 const val SERVER_PROXY_CLASS = "de.softcoture.mc.debagger.proxy.ServerProxy"
 
 enum class DebaggerItems (val unlocalizedName:String, val registryName:String) {
-    OBSIDIAN_INGOT("obsidianIngot", "ItemObsidianIngot" )
-    ;
+    RUBY("ruby", "ItemRuby"),
+    OBSIDIAN_INGOT("obsidianIngot", "ItemObsidianIngot" );
 }
