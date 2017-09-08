@@ -15,5 +15,5 @@ enum class DebaggerItems (val unlocalizedName:String, val registryName:String) {
 }
 
 enum class DebaggerBlocks (val unlocalizedName:String, val registryName:String) {
-    RUBY_BLOCK("blockRuby", "BlockRuby");
+    BLOCK_RUBY("blockRuby", "BlockRuby");
 }

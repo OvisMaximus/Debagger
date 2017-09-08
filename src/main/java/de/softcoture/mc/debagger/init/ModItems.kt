@@ -9,26 +9,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 
 object ModItems {
 
-    var obsidianIngot: Item? = null
-    var ruby: Item? = null
-
-    fun init() {
-        obsidianIngot = ItemObsidianIngot()
-        ruby = ItemRuby()
-    }
+    val OBSIDIAN_INGOT: Item = ItemObsidianIngot()
+    val RUBY: Item = ItemRuby()
 
     fun register () {
-        GameRegistry.register(obsidianIngot)
-        GameRegistry.register(ruby)
+        GameRegistry.register(OBSIDIAN_INGOT)
+        GameRegistry.register(RUBY)
     }
 
     fun registerRenders() {
-        registerRender(obsidianIngot)
-        registerRender(ruby)
+        registerRender(OBSIDIAN_INGOT)
+        registerRender(RUBY)
     }
 
-    private fun registerRender(item: Item?) {
-        if (item == null) return
+    private fun registerRender(item: Item) {
         val registryName = item.registryName?.toString() ?: item.toString()
         val resourceLocation = ModelResourceLocation(registryName, "inventory")
         val mesher = Minecraft.getMinecraft().renderItem.itemModelMesher

@@ -6,10 +6,7 @@ import de.softcoture.mc.debagger.init.ModItems
 
 abstract class CommonProxy {
     open fun preInit() {
-        ModItems.init()
         ModItems.register()
-
-        ModBlocks.init()
         ModBlocks.register()
     }
 

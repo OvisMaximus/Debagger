@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material
 
 class BlockRuby : Block {
     constructor() : super(Material.IRON) {
-        unlocalizedName = DebaggerBlocks.RUBY_BLOCK.unlocalizedName
-        setRegistryName(DebaggerBlocks.RUBY_BLOCK.registryName)
+        unlocalizedName = DebaggerBlocks.BLOCK_RUBY.unlocalizedName
+        setRegistryName(DebaggerBlocks.BLOCK_RUBY.registryName)
     }
 }

@@ -6,12 +6,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 
 object ModCrafting {
     fun register() {
-        GameRegistry.addShapedRecipe(ItemStack(ModBlocks.blockRuby),
+        GameRegistry.addShapedRecipe(ItemStack(ModBlocks.BLOCK_RUBY),
                 "RRR","RRR","RRR",
-                'R', ModItems.ruby)
-        GameRegistry.addShapelessRecipe(ItemStack(ModItems.ruby, 9),
-                ModBlocks.blockRuby)
+                'R', ModItems.RUBY)
+        GameRegistry.addShapelessRecipe(ItemStack(ModItems.RUBY, 9),
+                ModBlocks.BLOCK_RUBY)
         GameRegistry.addSmelting(Blocks.OBSIDIAN,
-                ItemStack(ModItems.obsidianIngot),0.5F)
+                ItemStack(ModItems.OBSIDIAN_INGOT),0.5F)
     }
 }
