@@ -1,5 +1,6 @@
-package de.softcoture.mc.debagger.blocks
+package de.softcoture.mc.debagger.init
 
+import de.softcoture.mc.debagger.blocks.BlockRuby
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
@@ -10,14 +11,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 
 object ModBlocks {
 
-    var rubyBlock: Block? = null
+    var blockRuby: Block? = null
 
     fun init() {
-        rubyBlock = BlockRuby()
+        blockRuby = BlockRuby()
     }
 
     fun register () {
-        registerBlock(rubyBlock)
+        registerBlock(blockRuby)
     }
 
     private fun registerBlock(block: Block?) {
@@ -29,7 +30,7 @@ object ModBlocks {
     }
 
     fun registerRenders() {
-        registerRender(rubyBlock)
+        registerRender(blockRuby)
     }
 
     private fun registerRender(block: Block?) {

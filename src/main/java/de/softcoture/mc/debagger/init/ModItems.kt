@@ -1,5 +1,7 @@
-package de.softcoture.mc.debagger.items
+package de.softcoture.mc.debagger.init
 
+import de.softcoture.mc.debagger.items.ItemObsidianIngot
+import de.softcoture.mc.debagger.items.ItemRuby
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.block.model.ModelResourceLocation
 import net.minecraft.item.Item
