@@ -8,5 +8,7 @@ object ModCrafting {
         GameRegistry.addShapedRecipe(ItemStack(ModBlocks.blockRuby),
                 "RRR","RRR","RRR",
                 'R', ModItems.ruby)
+        GameRegistry.addShapelessRecipe(ItemStack(ModItems.ruby, 9),
+                ModBlocks.blockRuby)
     }
 }
