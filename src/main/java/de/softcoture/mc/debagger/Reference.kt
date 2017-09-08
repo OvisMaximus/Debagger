@@ -13,3 +13,7 @@ enum class DebaggerItems (val unlocalizedName:String, val registryName:String) {
     RUBY("ruby", "ItemRuby"),
     OBSIDIAN_INGOT("obsidianIngot", "ItemObsidianIngot" );
 }
+
+enum class DebaggerBlocks (val unlocalizedName:String, val registryName:String) {
+    RUBY_BLOCK("blockRuby", "BlockRuby");
+}
