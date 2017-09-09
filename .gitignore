@@ -4,3 +4,4 @@ run/
 .idea/
 Debagger.iml
 classes
+.DS_Store
