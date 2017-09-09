@@ -8,17 +8,16 @@ import net.minecraft.block.state.IBlockState
 import net.minecraft.item.Item
 import java.util.*
 
-class BlockRuby : Block {
-
+class BlockDebaggerCloset : Block {
     val quantity = 1
 
     constructor() : super(Material.IRON) {
-        unlocalizedName = DebaggerBlocks.BLOCK_RUBY.unlocalizedName
-        setRegistryName(DebaggerBlocks.BLOCK_RUBY.registryName)
+        unlocalizedName = DebaggerBlocks.BLOCK_DEBAGGER_CLOSET.unlocalizedName
+        setRegistryName(DebaggerBlocks.BLOCK_DEBAGGER_CLOSET.registryName)
 
-        setHarvestLevel("pickaxe", 1)
+        setHarvestLevel("axe", 1)
         setHardness(10.0f)
-        setResistance(15.0f)
+        setResistance(10.0f)
         setCreativeTab(CreativeTab)
     }
 

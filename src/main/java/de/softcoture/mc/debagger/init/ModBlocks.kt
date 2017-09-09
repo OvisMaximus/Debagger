@@ -1,5 +1,6 @@
 package de.softcoture.mc.debagger.init
 
+import de.softcoture.mc.debagger.blocks.BlockDebaggerCloset
 import de.softcoture.mc.debagger.blocks.BlockRuby
 import net.minecraft.block.Block
 import net.minecraft.client.Minecraft
@@ -12,20 +13,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry
 object ModBlocks {
 
     val BLOCK_RUBY: Block = BlockRuby()
+    val BLOCK_DEBAGGER_CLOSET: Block = BlockDebaggerCloset()
 
     fun register () {
         registerBlock(BLOCK_RUBY)
+        registerBlock(BLOCK_DEBAGGER_CLOSET)
     }
 
     private fun registerBlock(block: Block) {
-        GameRegistry.register(block)
         val itemBlock = ItemBlock(block)
-        itemBlock.setRegistryName(block.registryName)
+        itemBlock.registryName = block.registryName
         GameRegistry.register(itemBlock)
+        GameRegistry.register(block)
     }
 
     fun registerRenders() {
         registerRender(BLOCK_RUBY)
+        registerRender(BLOCK_DEBAGGER_CLOSET)
     }
 
     private fun registerRender(block: Block) {

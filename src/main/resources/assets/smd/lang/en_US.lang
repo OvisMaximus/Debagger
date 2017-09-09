@@ -2,5 +2,6 @@ item.obsidianIngot.name=Obsidian Ingot
 item.ruby.name=Ruby
 
 tile.blockRuby.name=Block of Ruby
+tile.blockDebaggerCloset.name=Debagger Closet
 
 itemGroup.tab_debagger=Debagger Mod
