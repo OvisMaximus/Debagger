@@ -2,7 +2,6 @@ package de.softcoture.mc.debagger.blocks
 
 import de.softcoture.mc.debagger.CreativeTab
 import de.softcoture.mc.debagger.DebaggerBlocks
-import net.minecraft.block.Block
 import net.minecraft.block.BlockHorizontal
 import net.minecraft.block.material.Material
 import net.minecraft.block.properties.IProperty
@@ -12,15 +11,13 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
-import net.minecraft.util.Mirror
-import net.minecraft.util.Rotation
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
 import java.util.*
 
 class BlockDebaggerCloset : BlockHorizontal {
-    val quantity = 1
+    private val QUANTITY_ONE_ITEM = 1
 
     constructor() : super(Material.IRON) {
         unlocalizedName = DebaggerBlocks.BLOCK_DEBAGGER_CLOSET.unlocalizedName
@@ -72,6 +69,6 @@ class BlockDebaggerCloset : BlockHorizontal {
     }
 
     override fun quantityDropped(random: Random?): Int {
-        return quantity
+        return QUANTITY_ONE_ITEM
     }
 }
