@@ -1,6 +1,9 @@
 {
   "variants": {
-    "normal": {
-      "model": "smd:BlockDebaggerCloset" }
+    "normal": {"model": "smd:BlockDebaggerCloset" },
+    "facing=north": {"model": "smd:BlockDebaggerCloset" },
+    "facing=south": {"model": "smd:BlockDebaggerCloset", "y":  180 },
+    "facing=east": {"model": "smd:BlockDebaggerCloset", "y": 270 },
+    "facing=west": {"model": "smd:BlockDebaggerCloset", "y": 90 }
   }
 }
