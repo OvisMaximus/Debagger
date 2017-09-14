@@ -1,7 +1,8 @@
 {
   "textures": {
     "side": "smd:blocks/closet_side",
-    "door": "smd:blocks/closet_door"
+    "door": "smd:blocks/closet_door",
+    "particle": "smd:blocks/closet_side"
   },
   "elements": [
     { "from": [ 0, 0, 0 ],
