@@ -18,3 +18,7 @@ enum class DebaggerBlocks (val unlocalizedName:String, val registryName:String) 
     BLOCK_RUBY("blockRuby", "BlockRuby"),
     BLOCK_DEBAGGER_CLOSET("blockDebaggerCloset", "BlockDebaggerCloset");
 }
+
+enum class DebaggerTileEntities (val unlocalizedName:String, val registryName:String) {
+    TILE_ENTITY_DEBAGGER_CLOSET("tileEntityDebaggerCloset", "TileEntityDebaggerCloset");
+}
