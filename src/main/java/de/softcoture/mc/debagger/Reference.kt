@@ -22,3 +22,7 @@ enum class DebaggerBlocks (val unlocalizedName:String, val registryName:String) 
 enum class DebaggerTileEntities (val unlocalizedName:String, val registryName:String) {
     TILE_ENTITY_DEBAGGER_CLOSET("tileEntityDebaggerCloset", "TileEntityDebaggerCloset");
 }
+
+enum class DebaggerGuis (val id:Int) {
+    GUI_DEBAGGER_CLOSET(0)
+}

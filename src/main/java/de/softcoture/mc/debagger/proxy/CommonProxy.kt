@@ -1,9 +1,6 @@
 package de.softcoture.mc.debagger.proxy
 
-import de.softcoture.mc.debagger.init.ModBlocks
-import de.softcoture.mc.debagger.init.ModCrafting
-import de.softcoture.mc.debagger.init.ModItems
-import de.softcoture.mc.debagger.init.ModTileEntities
+import de.softcoture.mc.debagger.init.*
 
 abstract class CommonProxy {
     open fun preInit() {
@@ -15,6 +12,7 @@ abstract class CommonProxy {
 
     open fun init() {
         ModCrafting.register()
+        ModGuis.register()
     }
 
     open fun postInit() {

@@ -1,17 +1,26 @@
 package de.softcoture.mc.debagger.tileentity
 
-import de.softcoture.mc.debagger.DebaggerBlocks
-import de.softcoture.mc.debagger.DebaggerTileEntities
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.inventory.IInventory
 import net.minecraft.inventory.ISidedInventory
+import net.minecraft.inventory.InventoryBasic
+import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+import net.minecraft.nbt.NBTTagList
 import net.minecraft.network.NetworkManager
 import net.minecraft.network.play.server.SPacketUpdateTileEntity
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing
 
 class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
+    private val NBT_TYPE_COMPOUND = 10
+    val inventory: IInventory
+    val bagInventory: IInventory
+    init {
+        inventory = InventoryBasic("DebaggerClosetInventoryTitle", false, 1)
+        bagInventory = InventoryBasic("DebaggerClosetBagContentTitle", false, 9*6)
+    }
 
     override fun getField(id: Int): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -93,14 +102,44 @@ class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
      * Load from savegame or update state of client with data from server
      */
     override fun readFromNBT(nbt: NBTTagCompound?) {
-        super.readFromNBT(nbt)
+        super.readFromNBT(nbt!!)
+        readInventoryFromNBT("BagContent", bagInventory, nbt)
+        readInventoryFromNBT("Bag", inventory, nbt)
     }
 
     /**
      * Save to savegame or prepare server data to be transferred to client
      */
     override fun writeToNBT(nbt: NBTTagCompound?): NBTTagCompound {
-        return super.writeToNBT(nbt)
+        super.writeToNBT(nbt!!)
+        writeInventoryToNBT("BagContent", bagInventory, nbt)
+        writeInventoryToNBT("Bag", inventory, nbt)
+        return nbt
+    }
+
+    private fun readInventoryFromNBT(name: String, inventoryToBeRead: IInventory, nbt: NBTTagCompound) {
+        val list = nbt.getTagList(name, NBT_TYPE_COMPOUND)
+        inventoryToBeRead.clear()
+        for (tagIndex in 0..list.tagCount()) {
+            val tag = list.getCompoundTagAt(tagIndex)
+            val slotIndex = tag.getByte("Slot").toInt()
+            if(slotIndex >= 0 && slotIndex < inventoryToBeRead.sizeInventory) {
+                val stack = ItemStack.loadItemStackFromNBT(tag)
+                inventoryToBeRead.setInventorySlotContents(slotIndex, stack)
+            }
+        }
+        nbt.setTag(name, list)
+    }
+
+    private fun writeInventoryToNBT(name:String, inventoryToBeSaved:IInventory, nbt: NBTTagCompound) {
+        val list = NBTTagList()
+        for (slotIndex in 0..inventoryToBeSaved.sizeInventory) {
+            val tag = NBTTagCompound()
+            tag.setByte("Slot", slotIndex.toByte())
+            inventoryToBeSaved.getStackInSlot(slotIndex)?.writeToNBT(tag)
+            list.appendTag(tag)
+        }
+        nbt.setTag(name, list)
     }
 
     /**
@@ -130,4 +169,6 @@ class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
     override fun handleUpdateTag(tag: NBTTagCompound?) {
         super.handleUpdateTag(tag)
     }
+
+
 }

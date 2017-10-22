@@ -2,6 +2,9 @@ package de.softcoture.mc.debagger.blocks
 
 import de.softcoture.mc.debagger.CreativeTab
 import de.softcoture.mc.debagger.DebaggerBlocks
+import de.softcoture.mc.debagger.DebaggerGuis
+import de.softcoture.mc.debagger.init.ModGuis
+import de.softcoture.mc.debagger.instance
 import de.softcoture.mc.debagger.tileentity.TileEntityDebaggerCloset
 import net.minecraft.block.BlockHorizontal
 import net.minecraft.block.ITileEntityProvider
@@ -10,10 +13,12 @@ import net.minecraft.block.properties.IProperty
 import net.minecraft.block.state.BlockStateContainer
 import net.minecraft.block.state.IBlockState
 import net.minecraft.entity.EntityLivingBase
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.EnumFacing
+import net.minecraft.util.EnumHand
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.MathHelper
 import net.minecraft.world.World
@@ -79,4 +84,19 @@ class BlockDebaggerCloset : BlockHorizontal, ITileEntityProvider {
         return TileEntityDebaggerCloset()
     }
 
+    override fun onBlockActivated(worldIn: World?, pos: BlockPos?, state: IBlockState?, playerIn: EntityPlayer?,
+                                  hand: EnumHand?, heldItem: ItemStack?, side: EnumFacing?,
+                                  hitX: Float, hitY: Float, hitZ: Float): Boolean {
+        if (!worldIn?.isRemote!!) {
+            val tileEntity = worldIn.getTileEntity(pos)
+            when (tileEntity) {
+                is TileEntityDebaggerCloset -> {
+                    playerIn!!.openGui(instance, DebaggerGuis.GUI_DEBAGGER_CLOSET.id, worldIn, pos!!.x, pos.y, pos.z)
+                    return true
+                }
+            }
+
+        }
+        return false
+    }
 }
