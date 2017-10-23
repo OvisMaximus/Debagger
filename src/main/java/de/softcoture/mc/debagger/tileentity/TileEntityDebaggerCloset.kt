@@ -4,7 +4,6 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.IInventory
 import net.minecraft.inventory.ISidedInventory
 import net.minecraft.inventory.InventoryBasic
-import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.nbt.NBTTagList
@@ -98,13 +97,17 @@ class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    private val KEY_BAG_CONTENT = "BagContent"
+
+    private val KEY_BAG = "Bag"
+
     /**
      * Load from savegame or update state of client with data from server
      */
     override fun readFromNBT(nbt: NBTTagCompound?) {
         super.readFromNBT(nbt!!)
-        readInventoryFromNBT("BagContent", bagInventory, nbt)
-        readInventoryFromNBT("Bag", inventory, nbt)
+        readInventoryFromNBT(KEY_BAG, inventory, nbt)
+        readInventoryFromNBT(KEY_BAG_CONTENT, bagInventory, nbt)
     }
 
     /**
@@ -112,15 +115,15 @@ class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
      */
     override fun writeToNBT(nbt: NBTTagCompound?): NBTTagCompound {
         super.writeToNBT(nbt!!)
-        writeInventoryToNBT("BagContent", bagInventory, nbt)
-        writeInventoryToNBT("Bag", inventory, nbt)
+        writeInventoryToNBT(KEY_BAG_CONTENT, bagInventory, nbt)
+        writeInventoryToNBT(KEY_BAG, inventory, nbt)
         return nbt
     }
 
     private fun readInventoryFromNBT(name: String, inventoryToBeRead: IInventory, nbt: NBTTagCompound) {
         val list = nbt.getTagList(name, NBT_TYPE_COMPOUND)
         inventoryToBeRead.clear()
-        for (tagIndex in 0..list.tagCount()) {
+        for (tagIndex in 0..(list.tagCount()-1)) {
             val tag = list.getCompoundTagAt(tagIndex)
             val slotIndex = tag.getByte("Slot").toInt()
             if(slotIndex >= 0 && slotIndex < inventoryToBeRead.sizeInventory) {
@@ -133,7 +136,7 @@ class TileEntityDebaggerCloset : TileEntity(), ISidedInventory {
 
     private fun writeInventoryToNBT(name:String, inventoryToBeSaved:IInventory, nbt: NBTTagCompound) {
         val list = NBTTagList()
-        for (slotIndex in 0..inventoryToBeSaved.sizeInventory) {
+        for (slotIndex in 0..(inventoryToBeSaved.sizeInventory-1)) {
             val tag = NBTTagCompound()
             tag.setByte("Slot", slotIndex.toByte())
             inventoryToBeSaved.getStackInSlot(slotIndex)?.writeToNBT(tag)
