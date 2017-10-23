@@ -16,11 +16,13 @@ enum class SlotGroupProperties(val numRows: Int, val numColumns: Int, val xOffse
 }
 
 class GuiDebaggerCloset (container: Container)  : GuiContainer(container) {
+    init {
+        xSize = 176
+        ySize = 238
+    }
 
     override fun drawGuiContainerBackgroundLayer(partialTicks: Float, mouseX: Int, mouseY: Int) {
         mc.renderEngine.bindTexture(BACKGROUND)
-        xSize = 176
-        ySize = 238
 
         drawBackgroundToScreenCenter()
     }
